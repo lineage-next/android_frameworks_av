@@ -39,6 +39,14 @@ cc_library_shared {
         "-Wall",
     ],
 
+    product_variables: {
+        // ifneq ($(TARGET_USES_MEDIA_EXTENSIONS),true)
+        has_legacy_camera_hal1: {
+            cflags: ["-DCAMCORDER_GRALLOC_SOURCE"],
+        },
+        // endif
+    },
+
     sanitize: {
         misc_undefined: [
             "signed-integer-overflow",
